@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chakrashield"
-version = "0.1.0"
-description = "Cross-platform defensive network visibility and PCAP analysis GUI"
+version = "0.3.0"
+description = "Defensive cybersecurity workbench with network, PCAP and public infrastructure intelligence"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []

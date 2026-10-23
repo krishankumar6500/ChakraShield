@@ -2,17 +2,23 @@
 
 ChakraShield is an open-source, cross-platform defensive network visibility and PCAP metadata analysis MVP, inspired by the protective symbolism of the Sudarshan Chakra. It is designed for learning and authorized security monitoring.
 
-## Current features
-- Desktop GUI built with PySide6: overview, network tools, offline PCAP forensics, and bounded live packet capture.
-- Basic network interface inventory and DNS resolution.
-- Bounded TCP checks against a small list of common ports. Only scan systems you own or are explicitly authorized to assess.
-- PCAP/PCAPNG metadata analysis with optional Scapy.
+## Current features (v0.3.0)
+- Desktop GUI built with PySide6: dashboard, network tools, PCAP forensics, bounded live capture, website checks, reports, and settings.
+- Interface inventory table with state and addresses.
+- DNS resolution and bounded TCP checks against a small list of common ports. Only assess systems you own or are explicitly authorized to assess.
+- PCAP/PCAPNG metadata analysis with protocol counts and endpoint summaries (Scapy optional).
 - Live packet metadata capture limited to 1–60 seconds, with authorization confirmation.
-- CLI commands and JSON output.
-- Unit tests.
+- Basic, single-request HTTP(S) website inspection: response status, redirect destination, selected security headers and TLS validation.
+- Heuristic scan of a user-selected authorized source/text file (max 2 MB); findings are indicators only and may be false positives.
+- Export latest module results to JSON or HTML.
+- Public-IP approximate geolocation through ipapi.co, with explicit confirmation and provider/privacy notice. Not GPS.
+- Website hosting intelligence based on public DNS resolution; does not claim to reveal hidden origins.
+- CCTV/NVR defensive checklist and bounded checks of selected common web/RTSP ports on one authorized IP. No jamming or unauthorized camera access.
+- Dashboard network topology overview panel.
+- CLI commands and unit tests.
 
 ## Important limitations
-This is an early MVP, not a full Bettercap replacement, commercial scanner, or production IDS. It does not decrypt HTTPS/TLS, read Instagram/WhatsApp private messages, or extract passwords, cookies, tokens, or credentials. It does not perform MITM, ARP spoofing, Wi-Fi deauthentication, exploitation, stealth, brute force, or destructive actions. Alerts and metadata are not proof of an attack. Live capture may require administrator/root permissions; Windows may require Npcap.
+This is an early MVP, not a full Bettercap replacement, commercial scanner, or production IDS. It does not decrypt HTTPS/TLS, read Instagram/WhatsApp private messages, or extract passwords, cookies, tokens, or credentials. It does not perform MITM, ARP spoofing, Wi-Fi deauthentication or CCTV jamming, unauthorized camera hacking, exploitation, stealth, brute force, or destructive actions. Alerts and metadata are not proof of an attack. Live capture may require administrator/root permissions; Windows may require Npcap.
 
 ## Ubuntu / Debian / Kali Linux
 ```bash
@@ -61,10 +67,10 @@ git push -u origin main
 GitHub will prompt you to authenticate; use GitHub's browser/device login or a credential manager. Never put access tokens or passwords in this repository. If the repository already exists, inspect its contents before pushing.
 
 ## Roadmap (not implemented yet)
-- Rich protocol/flow tables and timeline.
+- Richer protocol/flow tables and packet timeline.
 - Trusted vulnerability advisory matching.
-- Website/source-code analysis integration.
-- HTML/PDF report export and packaged installers.
+- Dependency and repository-wide source-code analysis.
+- PDF report export and packaged installers.
 - More tests and verified Windows packaging.
 
 ## License

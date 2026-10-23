@@ -1,0 +1,3 @@
+[console_scripts]
+chakrashield = sentinel.cli:main
+chakrashield-gui = sentinel.gui:main

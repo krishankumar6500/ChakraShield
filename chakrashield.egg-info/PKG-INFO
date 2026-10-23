@@ -1,0 +1,92 @@
+Metadata-Version: 2.4
+Name: chakrashield
+Version: 0.3.0
+Summary: Defensive cybersecurity workbench with network, PCAP and public infrastructure intelligence
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: gui
+Requires-Dist: PySide6>=6.6; extra == "gui"
+Provides-Extra: capture
+Requires-Dist: scapy>=2.5; extra == "capture"
+Provides-Extra: test
+Requires-Dist: pytest>=8; extra == "test"
+Dynamic: license-file
+
+# ChakraShield — All-in-One Defensive Cybersecurity GUI
+
+ChakraShield is an open-source, cross-platform defensive network visibility and PCAP metadata analysis MVP, inspired by the protective symbolism of the Sudarshan Chakra. It is designed for learning and authorized security monitoring.
+
+## Current features (v0.3.0)
+- Desktop GUI built with PySide6: dashboard, network tools, PCAP forensics, bounded live capture, website checks, reports, and settings.
+- Interface inventory table with state and addresses.
+- DNS resolution and bounded TCP checks against a small list of common ports. Only assess systems you own or are explicitly authorized to assess.
+- PCAP/PCAPNG metadata analysis with protocol counts and endpoint summaries (Scapy optional).
+- Live packet metadata capture limited to 1–60 seconds, with authorization confirmation.
+- Basic, single-request HTTP(S) website inspection: response status, redirect destination, selected security headers and TLS validation.
+- Heuristic scan of a user-selected authorized source/text file (max 2 MB); findings are indicators only and may be false positives.
+- Export latest module results to JSON or HTML.
+- Public-IP approximate geolocation through ipapi.co, with explicit confirmation and provider/privacy notice. Not GPS.
+- Website hosting intelligence based on public DNS resolution; does not claim to reveal hidden origins.
+- CCTV/NVR defensive checklist and bounded checks of selected common web/RTSP ports on one authorized IP. No jamming or unauthorized camera access.
+- Dashboard network topology overview panel.
+- CLI commands and unit tests.
+
+## Important limitations
+This is an early MVP, not a full Bettercap replacement, commercial scanner, or production IDS. It does not decrypt HTTPS/TLS, read Instagram/WhatsApp private messages, or extract passwords, cookies, tokens, or credentials. It does not perform MITM, ARP spoofing, Wi-Fi deauthentication or CCTV jamming, unauthorized camera hacking, exploitation, stealth, brute force, or destructive actions. Alerts and metadata are not proof of an attack. Live capture may require administrator/root permissions; Windows may require Npcap.
+
+## Ubuntu / Debian / Kali Linux
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-pip
+cd ChakraShield
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[gui,capture,test]"
+pytest -q
+chakrashield-gui
+```
+
+## Windows
+Install Python 3.10+; install Npcap if live capture is needed. Open PowerShell in this folder:
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e ".[gui,capture,test]"
+pytest -q
+chakrashield-gui
+```
+
+## CLI examples
+```bash
+chakrashield interfaces
+chakrashield dns example.com
+chakrashield probe 192.168.1.1 --output probe.json
+chakrashield pcap sample.pcap --output pcap-report.json
+chakrashield capture eth0 --seconds 10 --output capture.json
+```
+Use your actual interface name (list it first). Only capture traffic on devices/networks you own or have explicit permission to monitor.
+
+## Public GitHub repository setup
+Create a **public** repository named `ChakraShield` on your GitHub account, without initializing it with a README/license. Then, from this folder:
+```bash
+git init
+git add .
+git commit -m "Initial ChakraShield defensive cybersecurity GUI"
+git branch -M main
+git remote add origin https://github.com/krishankumar6500/ChakraShield.git
+git push -u origin main
+```
+GitHub will prompt you to authenticate; use GitHub's browser/device login or a credential manager. Never put access tokens or passwords in this repository. If the repository already exists, inspect its contents before pushing.
+
+## Roadmap (not implemented yet)
+- Richer protocol/flow tables and packet timeline.
+- Trusted vulnerability advisory matching.
+- Dependency and repository-wide source-code analysis.
+- PDF report export and packaged installers.
+- More tests and verified Windows packaging.
+
+## License
+MIT — see `LICENSE`.

@@ -1,0 +1,9 @@
+
+[capture]
+scapy>=2.5
+
+[gui]
+PySide6>=6.6
+
+[test]
+pytest>=8
